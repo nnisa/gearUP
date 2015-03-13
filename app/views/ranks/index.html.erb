@@ -1,0 +1,21 @@
+<h1>Score Board</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Player Name</th>
+      <th>Match</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ranks.each do |rank| %>
+      <tr>
+        <td><%= link_to rank.player.name, rank.player %></td>
+        <td><%= rank.match.created_at.strftime("%b %e, %Y @ %H:%M %P") %></td>
+        <td><%= rank.score %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

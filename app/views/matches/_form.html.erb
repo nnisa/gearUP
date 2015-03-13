@@ -1,0 +1,29 @@
+<%= simple_form_for @match do |f| %>
+  <% if @match.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
+
+      <ul>
+      <% @match.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+
+    <%= f.input :location %>
+    <%= f.input :player_one_id, :collection => Player.alphabetical.all %>
+    <%= f.input :player_two_id, :collection => Player.alphabetical.all %>
+    <%= f.input :sport_id, :collection => Sport.alphabetical.all %>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', ranks_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+
+
+  
+<% end %>

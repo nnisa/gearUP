@@ -1,0 +1,25 @@
+<%= simple_form_for @rank do |f| %>
+  <% if @rank.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rank.errors.count, "error") %> prohibited this rank from being saved:</h2>
+
+      <ul>
+      <% @rank.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+
+    <%= f.input :player_id, :collection => Player.alphabetical.all %>
+    <%= f.input :match_id, :collection => Match.all, :label_method => :created_at, :value_method => :id,:label => "Match" %>
+    <%= f.input :score %>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', ranks_path, :class => 'btn' %>
+    </div>
+  </fieldset>
+<% end %>
